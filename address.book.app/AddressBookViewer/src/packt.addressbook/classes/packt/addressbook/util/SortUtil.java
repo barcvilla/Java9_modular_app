@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package packt.addressbook.util;
+
+import java.util.List;
+
+/**
+ *
+ * @author barcvilla
+ */
+public class SortUtil {
+   public<T extends Comparable> List<T> sortList(List<T> list)
+   {
+       for(int outer = 0; outer < list.size() - 1; outer++)
+       {
+           for(int inner = 0; inner < list.size() - outer -1;  inner++)
+           {
+               if(list.get(inner).compareTo(list.get(inner + 1)) > 0)
+               {
+                   swap(list, inner);
+               }
+           }
+       }
+       return list;
+   }
+   
+   private <T> void swap(List<T> list, int inner)
+   {
+       T temp = list.get(inner);
+       list.set(inner, list.get(inner + 1));
+       list.set(inner + 1, temp);
+   }
+}
